@@ -65,7 +65,7 @@ def package_split(pkg) -> tuple:
 
 
 def get_package_list(cmd=["sudo", "pacman", "-Qs"]) -> list:
-    print("Using command {cmd} to get package details")
+    print(f"Using command {cmd} to get package details")
     cmd_result = subprocess.run(cmd, capture_output=True)
 
     if cmd_result.stderr == b"":
@@ -195,13 +195,12 @@ def pkg_ask_and_write_to_file(cmd=[], file="requirements.txt"):
 
     if action == "y":
         pkg_lst_write(approved_packages, file)
-
-    print(f"Approved packages written to\n {file}")
+        print(f"Approved packages written to\n {file}")
 
 
 def main():
     print("Write CMD to use ('n' for default cmd)")
-    cmd = input("\t<>")
+    cmd = input("\t§ ")
 
     cmd_lst = []
 
@@ -212,7 +211,7 @@ def main():
         print("Using default command")
 
     print("\nWrite path to file to use ('n' for default path)")
-    cmd = input("\t<>")
+    cmd = input("\t§ ")
     path = "requirements.txt"
 
     if cmd.lower() != "n":
